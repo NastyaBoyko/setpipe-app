@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <meta charset="utf-8">
+    <title>Setpipe</title>
+    <script src="/assets/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/assets/styles.css"> -->
+    <%- include partials/head.ejs %>
+
+  </head>
+  <body>
+    <%- include partials/header.ejs %>
+
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="caption">
+              <p>Официальный импортер шлангов Томифлекс в России.
+              <br><br>Наша компания специализируется на оптовых и розничных поставках шлангов Томифлекс из ПВХ (поливинилхлорида), ПУ (полиуретана) и полиамида.
+               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="featured-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Каталог продукции</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <% for(var i=0; i < categories.length; i++) { %>
+            <a id="main_category_<%= i %>" class="col-md-3" href="/catalog">
+              <div class="featured-item">
+                <img src="<%= categories[i].img %>" alt="Item 1">
+                <h4><%= categories[i].name %></h4>
+              </div>
+            </a>
+          <% } %>
+        </div>
+      </div>
+    </main>
+
+    <%- include partials/footer.ejs %>
+  </body>
+</html>

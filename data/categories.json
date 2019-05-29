@@ -1,0 +1,50 @@
+[
+	{
+		"id": 1,
+		"name": "ПВХ и ПУ армированные синтетической нитью",
+		"url": "pvh-i-pu-armir-sint-nitu",
+		"img": "/img/brain-food.jpg"
+	},
+	{
+		"id": 2,
+		"name": "ПУ армированные ПВХ спиралью",
+		"url": "pu-armir-pvh-nitu",
+		"img": "/img/agro-elastic.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Шланги ПВХ и ПУ со СТАЛЬНОЙ спиралью",
+		"url": "pvh-i-pu-so-stal-spiral",
+		"img": "/img/wire-dex.jpg"
+	},
+	{
+		"id": 4,
+		"name": "Шланги ПУ армированные ПВХ спиралью",
+		"url": "pu-armir-stal-spiral",
+		"img": "/img/lignum-se-pu.jpg"
+	},
+	{
+		"id": 5,
+		"name": "Неармированные трубки ПВХ",
+		"url": "nearmir-trubki-pvh",
+		"img": "/img/cristal.jpg"
+	},
+	{
+		"id": 6,
+		"name": "Неармированные трубки ПУ",
+		"url": "nearmir-trubki-pu",
+		"img": "/img/cristal-pu.jpg"
+	},
+	{
+		"id": 7,
+		"name": "Полиамидные трубки",
+		"url": "poliamid-trubki",
+		"img": "/img/polyamid.jpg"
+	},
+	{
+		"id": 8,
+		"name": "Хомуты",
+		"url": "homuty",
+		"img": "/img/gbs.jpg"
+	}	
+]

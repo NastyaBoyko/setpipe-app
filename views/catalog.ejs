@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <meta charset="utf-8">
+    <title>Setpipe</title>
+    <script src="/assets/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/assets/styles.css"> -->
+    <%- include partials/head.ejs %>
+
+  </head>
+  <body>
+    <%- include partials/header.ejs %>
+
+    <main id="catalog-content" class="featured-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Каталог продукции</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured container">
+        <div class="row">
+          <div class="col-md-3">
+            <aside>
+              <p>Категории:</p>
+              <% for(var i=0; i < categories.length; i++) { %>
+                <div>
+                  <input id="category_<%= i %>" class="category-select" type="radio" name="category"> <label for="category_<%= i %>"><%= categories[i].name %></label>       
+                </div>
+              <% } %>
+            </aside>
+          </div>
+
+          <div class="col-md-9 posts">
+            <div class="row content pipes" id="pipes-view">
+              <% for(var i = 0; i < pipes.length; i++){%>
+                <!-- <div class="pipes-item item col-md-3">
+                  <a href="/catalog/<%= pipes[i].id %>">
+                    <div class="featured-item">
+                      <img src="<%= pipes[i].photo %>" alt="">
+                      <h4><%= pipes[i].name %></h4>
+                    </div>
+                  </a>
+                </div> -->
+                <div class="pipes-item item col-md-12">
+                  <a href="/catalog/<%= pipes[i].id %>">
+                    <div class="featured-item">
+                      <img src="<%= pipes[i].photo %>" alt="">
+                      <h4><%= pipes[i].name %></h4>
+                      <p><%= pipes[i].short_description %></p>
+                    </div>
+                  </a>
+                </div>
+              <%}%>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <%- include partials/footer.ejs %>
+    <script>
+      $("input[name='category']").click(function(){
+        if ($(this).is(':checked')) {
+          var idValue = $(this).attr('id');
+          idValue = idValue.split("_")[1];
+          console.log(idValue);
+          $.ajax({
+            type: 'post',
+            data: {selectedCategotyID:idValue},
+            url: '/catalog',
+            success: function (res) {
+              // console.log(res);
+              // console.log($(res).filter('#catalog-content')[0].querySelectorAll('#pipes-view')[0]);
+              var resultHTML;
+              if (typeof $(res)[13] === "undefined") {
+                 resultHTML = "<p>К сожалению в данной категории нет продуктов :(</p>";
+              }
+              else resultHTML = $(res).filter('#catalog-content')[0].querySelectorAll('#pipes-view')[0]
+              $('#pipes-view').replaceWith(resultHTML);
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
