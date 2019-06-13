@@ -26,7 +26,7 @@
         <div class="row">
           <div class="col-md-3">
             <aside>
-              <p>Категории:</p>
+              <p class="category-title">Категории:</p>
               <% for(var i=0; i < categories.length; i++) { %>
                 <div>
                   <input id="category_<%= i %>" class="category-select" type="radio" name="category"> <label for="category_<%= i %>"><%= categories[i].name %></label>       
@@ -37,21 +37,26 @@
 
           <div class="col-md-9 posts">
             <div class="row content pipes" id="pipes-view">
+              <div class="list-head d-flex align-items-center col-md-12">
+                <div class="list-head-title"><p>Наименование</p></div>
+                <div class="list-head-description"><p>Краткое описание</p></div>
+                <div class="list-head-diametr"><p>Внутренний диаметр [мм]</p></div>
+                <div class="list-head-temperature"><p>Рабочие температуры [°C]</p></div>
+                <div class="list-head-preassure"><p>Рабочее (Макс.) давление [бар]</p></div>
+              </div>
+              
               <% for(var i = 0; i < pipes.length; i++){%>
-                <!-- <div class="pipes-item item col-md-3">
-                  <a href="/catalog/<%= pipes[i].id %>">
-                    <div class="featured-item">
-                      <img src="<%= pipes[i].photo %>" alt="">
-                      <h4><%= pipes[i].name %></h4>
-                    </div>
-                  </a>
-                </div> -->
                 <div class="pipes-item item col-md-12">
                   <a href="/catalog/<%= pipes[i].id %>">
-                    <div class="featured-item">
-                      <img src="<%= pipes[i].photo %>" alt="">
-                      <h4><%= pipes[i].name %></h4>
-                      <p><%= pipes[i].short_description %></p>
+                    <div class="featured-item d-flex align-items-center">
+                      <div class="title">
+                        <h4><%= pipes[i].name %></h4>
+                        <img src="<%= pipes[i].photo %>" alt="">         
+                      </div>
+                      <p class="short-description"><%= pipes[i].short_description %></p>
+                      <p class="inter-diameters"><%= pipes[i].inter_diameters %></p>
+                      <p class="temperatures"><%= pipes[i].temperatures %></p>
+                      <p class="pressure"><%= pipes[i].pressure %></p>
                     </div>
                   </a>
                 </div>

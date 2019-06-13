@@ -1,13 +1,13 @@
 [
 	{
 		"id": 1,
-		"name": "ПВХ и ПУ армированные синтетической нитью",
+		"name": "ПВХ и ПУ армированные нитью",
 		"url": "pvh-i-pu-armir-sint-nitu",
 		"img": "/img/brain-food.jpg"
 	},
 	{
 		"id": 2,
-		"name": "ПУ армированные ПВХ спиралью",
+		"name": "Шланги ПВХ армированные ПВХ спиралью",
 		"url": "pu-armir-pvh-nitu",
 		"img": "/img/agro-elastic.jpg"
 	},

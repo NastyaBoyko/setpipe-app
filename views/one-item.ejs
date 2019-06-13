@@ -1,25 +1,157 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>To-Do</title>
+    <!-- <meta charset="utf-8">
+    <title>Setpipe</title>
     <script src="/assets/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <!-- <script src="/assets/todo-list.js" charset="utf-8"></script> -->
-    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css"> -->
+    <%- include partials/head.ejs %>
+
   </head>
   <body>
-    <header></header>
+    <%- include partials/header.ejs %>
 
-    <main>
-      <div class="content">
-          <div class="pipes-item">
-            <img src="<%= pipe.photo %>">
-            <h4><%= pipe.name %></h4>
-            <p><%= pipe.short_description %></p>
+
+    <div class="single-product">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1><%= pipe.name %></h1>
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="product-slider">
+              <% if(pipe.add_photo != null) { %>
+              <div id="slider" class="flexslider">
+                <ul class="slides">
+                  <li>
+                    <img src="<%= pipe.photo %>" />
+                  </li>
+                  <li>
+                    <img src="<%= pipe.add_photo %>" />
+                  </li>
+                </ul>
+              </div>
+              <div id="carousel" class="flexslider">
+                <ul class="slides">
+                  <li>
+                    <img src="<%= pipe.photo %>" />
+                  </li>
+                  <li>
+                    <img src="<%= pipe.add_photo %>" />
+                  </li>
+                </ul>
+              </div>
+              <% } else { %>
+                <div class="single-pipe-photo">
+                  <img src="<%= pipe.photo %>">
+                </div>
+              <% } %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-content">
+              <h4><%= pipe.name %></h4>
+              <p class="single-temp"><b>Рабочая температура:</b> <%= pipe.temperatures %></p>
+              <p class="single-color"><b>Цвет:</b> <%= pipe.color %></p>
+              <p class="single-properties"><b>Свойства:</b> <%= pipe.properties %></p>
+              <p class="single-usage"><b>Области применения:</b> <%= pipe.usage %></p>
+              
+              <p class="single-cost"><b>Цена:</b> <a href="#"><%= pipe.cost %></a></p>
+              
+              <!-- <form action="" method="get">
+                <label for="quantity">Quantity:</label>
+                <input name="quantity" type="quantity" class="quantity-text" id="quantity" 
+                  onfocus="if(this.value == '1') { this.value = ''; }" 
+                    onBlur="if(this.value == '') { this.value = '1';}"
+                    value="1">
+                <input type="submit" class="button" value="Order Now!">
+              </form> -->
+              <!-- <div class="down-content">
+                <div class="categories">
+                  <h6>Category: <span><a href="#">Pants</a>,<a href="#">Women</a>,<a href="#">Lifestyle</a></span></h6>
+                </div>
+                <div class="share">
+                  <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
+    </div>
 
-    <footer></footer>
+    <% if(pipe.same_item != null) { %>
+    <div class="featured-items same-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading" style="margin-top: 0;">
+              <div class="line-dec"></div>
+              <h1>Похожие товары:</h1>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+
+              <% for(var i = 0; i < pipe.same_item.length; i++) { %>
+              <a href="">
+                <div class="featured-item">
+                  <img src="<%= pipes[pipe.same_item[i]-1].photo %>" alt="">
+                  <h4><%= pipes[pipe.same_item[i]-1].name %></h4>
+                </div>
+              </a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+    <div class="additional-info-single-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li>Характеристики шлангов при температуре окружающей среды +20°С.</li>
+              <li>Ознакомьтесь с <a href="">ПОЛЕЗНОЙ ИНФОРМАЦИЕЙ</a>.</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li><b>ДОСТАВКА</b> до склада транспортной компании г. Смоленска и г. Москвы по согласованию.</li>
+              <li>Выполняем заказы на изготовление шлангов необходимой длины.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include partials/footer.ejs %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".owl-carousel").owlCarousel();
+        $('#carousel').flexslider({
+          animation: "slide",
+          controlNav: false,
+          animationLoop: false,
+          slideshow: false,
+          itemWidth: 210,
+          itemMargin: 5,
+          asNavFor: '#slider'
+        });
+       
+        $('#slider').flexslider({
+          animation: "slide",
+          controlNav: false,
+          animationLoop: false,
+          slideshow: false,
+          sync: "#carousel"
+        });
+      });
+    </script>
   </body>
 </html>
