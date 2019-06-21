@@ -33,3 +33,40 @@
       </div>
     </nav>
 </header>
+
+<div id="feedback-form" class="modal-window d-none">
+	<div class="close-btn"></div>
+  <p class="feedback-text">Для экономии Вашего времени и увеличения скорости обработки Ваших заявок, мы создали данную форму обратной связи. Задайте любой вопрос, который Вас интересует и получите незамедлительный результат.</p>
+  <form action="">
+  	<div class="form-group">
+	    <label for="name-input">Ваше имя <span>*</span></label>
+	    <input type="text" name="name" class="form-control" id="name-input" aria-describedby="nameHelp" placeholder="Введите ваше имя" required >
+	    <!-- <small id="nameHelp" class="form-text text-muted">Заполните это поле</small> -->
+	  </div>
+	  <div class="form-group">
+	    <label for="email-input">Ваш email <span>*</span></label>
+	    <input type="email" name="email" class="form-control" id="email-input" aria-describedby="emailHelp" placeholder="Введите ваш email" required>
+	  </div>
+	  <div class="form-group">
+	    <label for="phone-input">Ваш телефон</label>
+	    <input type="text" name="phone" class="form-control" id="phone-input" aria-describedby="emailHelp" placeholder="Введите ваш телефон">
+	  </div>
+	  <div class="form-group">
+	    <label for="textarea">Ваше сообщение <span>*</span></label>
+	    <textarea name="message" class="form-control" id="textarea" rows="3" required></textarea>
+	  </div>
+	  <div class="form-group">
+	  	<label>
+	  		Введите два любых ненулевых числа и их сумму: <span>*</span>
+	  	</label>
+	  	<div>
+		  	<input class="form-control check-number" type="number" name="one"> + 
+		  	<input class="form-control check-number" type="number" name="two"> = 
+		  	<input class="form-control check-number" type="number" name="sum">
+	  	</div>
+	  	<small class="form-text wrong d-none">Неверное выражение!</small>
+	  </div>
+
+	  <button class="btn btn-primary send">Отправить</button>
+  </form>
+</div>
