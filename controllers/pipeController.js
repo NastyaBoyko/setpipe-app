@@ -5,32 +5,34 @@ var categs = require('../data/categories.json');
 var fs = require('fs');
 var ejs = require('ejs');
 
+// var page_title = '';
+
+
 var urlencodedparser = bodyParser.urlencoded({extended:true});
 
 module.exports = function(app){
 
   app.get('/', function(req,res){
-    res.render('index',{categories:categs});
+    res.render('index',{categories:categs, page:'main'});
   });
 
   app.get('/catalog', function(req,res){
-    res.render('catalog',{pipes:data, categories:categs});
+    res.render('catalog',{pipes:data, categories:categs, page:'catalog'});
   });
 
   app.get('/catalog/:id', function(req,res){
     const id = req.params.id;
-    res.render('one-item',{pipe:data[id-1], pipes:data});
+    res.render('one-item',{pipe:data[id-1], pipes:data, page:'catalog'});
   });
 
   app.post('/catalog', urlencodedparser, function(req,res){
-    //console.log(req.body.selectedCategotyID);
     var selectedCategoryID = ++req.body.selectedCategotyID;
     var selected_pipes = [];
     console.log(selectedCategoryID);
     for (var i = 0; i < data.length; i++) {
-      console.log("obj " + i + ": category number = " + data[i].category);
+      // console.log("obj " + i + ": category number = " + data[i].category);
       if (data[i].category == selectedCategoryID) {
-        console.log(data[i]);
+        // console.log(data[i]);
         selected_pipes.push(data[i]);
       }
     }
@@ -42,7 +44,7 @@ module.exports = function(app){
       //   const html = pipes_template({pipes: selected_pipes});
       //   console.log(html);
       // });
-      res.render("catalog",{pipes:selected_pipes, categories:categs});
+      res.render("catalog",{pipes:selected_pipes, categories:categs, page:'catalog'});
     // }
 
   });
