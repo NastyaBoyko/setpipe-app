@@ -8,12 +8,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item <% if(page == 'main') { %> active <% } %>">
               <a class="nav-link" href="/">Главная
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <% if(page == 'catalog') { %> active <% } %>">
               <a class="nav-link" href="/catalog">Шланги и трубки</a>
             </li>
             <li class="nav-item">
@@ -25,14 +25,12 @@
             <li class="nav-item">
               <a class="nav-link" href="about.html">Контакты</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Акции</a>
-            </li>
           </ul>
         </div>
       </div>
     </nav>
 </header>
+
 
 <div id="feedback-form" class="modal-window d-none">
 	<div class="close-btn"></div>
